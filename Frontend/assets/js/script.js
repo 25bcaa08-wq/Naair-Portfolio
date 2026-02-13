@@ -24,8 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  fetch('http://localhost:5001/api/portfolio')  
-  // fetch('https://akanshanairportfolio.onrender.com/api/portfolio')  
+  
+  fetch('https://naair-portfolio.onrender.com/api/portfolio')  
     .then(response => {
       if (!response.ok) throw new Error('Network response was not ok');
       return response.json();
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
       };
 
       try {
-        const response = await fetch('http://localhost:5001/api/portfolio/contact', {
+        const response = await fetch('https://naair-portfolio.onrender.com/api/portfolio/contact', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)

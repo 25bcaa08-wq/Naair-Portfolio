@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Akanksha Nair • BCA Student</title>
+  <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body>
+
+  <!-- Page Loader -->
+  <div class="loader">
+    <div class="spinner"></div>
+    <p>Loading portfolio...</p>
+  </div>
+
+  <!-- Sticky Navbar -->
+  <nav class="navbar sticky">
+    <div class="nav-container">
+      <div class="logo">Akanksha Nair</div>
+      <ul class="nav-links">
+        <li><button class="nav-link active" data-page="about">About</button></li>
+        <li><button class="nav-link" data-page="resume">Resume</button></li>
+        <li><button class="nav-link" data-page="contact">Contact</button></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="main-content">
+
+    <!-- About -->
+    <section id="about" class="page active fade-in">
+      <div class="hero">
+        <div class="hero-avatar-wrapper">
+          <figure class="avatar-box">
+            <img src="./assets/images/my-avatar.png" alt="Akanksha Nair" class="hero-avatar">
+          </figure>
+        </div>
+
+        <div class="hero-content">
+          <h1 id="name">Akanksha Nair</h1>
+          <p id="title" class="subtitle">BCA Student • Kristu Jayanti University</p>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="card about-card">
+          <h2>About Me</h2>
+          <div id="about-text" class="about-text"></div>
+        </div>
+
+        <div class="card services-card">
+          <h2>What I'm Doing</h2>
+          <div class="services-grid">
+            <div class="service-item">
+              <div class="service-icon"><i class="fas fa-paint-brush"></i></div>
+              <h3>Web Design</h3>
+              <p>Modern, clean and user-centered interface design.</p>
+            </div>
+            <div class="service-item">
+              <div class="service-icon"><i class="fas fa-code"></i></div>
+              <h3>Web Development</h3>
+              <p>Building responsive, performant websites & applications.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resume -->
+    <section id="resume" class="page">
+      <div class="container">
+        <div class="card resume-card">
+          <h2>Resume</h2>
+
+          <div class="timeline-section">
+            <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+            <div id="education-list" class="timeline"></div>
+          </div>
+
+          <div class="timeline-section">
+            <h3><i class="fas fa-tools"></i> Technical Skills</h3>
+            <div id="skills-list" class="chip-container"></div>
+          </div>
+
+          <div class="timeline-section">
+            <h3><i class="fas fa-project-diagram"></i> Academic Projects</h3>
+            <div id="projects-list" class="timeline"></div>
+          </div>
+
+          <div class="timeline-section">
+            <h3><i class="fas fa-star"></i> Strengths</h3>
+            <div id="strengths-list" class="chip-container"></div>
+          </div>
+
+          <div class="timeline-section">
+            <h3><i class="fas fa-heart"></i> Interests</h3>
+            <div id="interests-list" class="chip-container"></div>
+          </div>
+
+          <div class="timeline-section">
+            <h3><i class="fas fa-user"></i> Personal Details</h3>
+            <div id="personal-list" class="info-grid"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="page">
+      <div class="container">
+        <div class="card contact-card">
+          <h2>Get in Touch</h2>
+
+          <div class="contact-grid">
+            <div class="map-wrapper">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d6765.378470802147!2d92.73748043187469!3d11.675803691510264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTHCsDQwJzMxLjAiTiA5MsKwNDQnMjEuNSJF!5e0!3m2!1sen!2sin!4v1770965106433!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+
+            <div class="contact-form-wrapper">
+              <form id="contact-form">
+                <input type="text" name="fullname" placeholder="Full Name" required>
+                <input type="email" name="email" placeholder="Email Address" required>
+                <textarea name="message" placeholder="Your Message" rows="6" required></textarea>
+                <button type="submit" class="btn primary">
+                  <i class="fas fa-paper-plane"></i> Send Message
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <div class="social-links">
+            <a id="linkedin" href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a id="github" href="#" target="_blank"><i class="fab fa-github"></i></a>
+            <a id="instagram" href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Mobile Bottom Nav -->
+  <nav class="mobile-nav">
+    <button class="nav-btn active" data-page="about"><i class="fas fa-user"></i></button>
+    <button class="nav-btn" data-page="resume"><i class="fas fa-file-alt"></i></button>
+    <button class="nav-btn" data-page="contact"><i class="fas fa-envelope"></i></button>
+  </nav>
+
+  <script src="./assets/js/script.js"></script>
+</body>
+
+</html>

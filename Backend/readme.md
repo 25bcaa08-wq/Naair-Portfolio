@@ -1,0 +1,1 @@
+node seed-delete-messages.js

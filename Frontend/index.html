@@ -127,8 +127,10 @@
           <div class="contact-grid">
             <div class="map-wrapper">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d6765.378470802147!2d92.73748043187469!3d11.675803691510264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTHCsDQwJzMxLjAiTiA5MsKwNDQnMjEuNSJF!5e0!3m2!1sen!2sin!4v1770965106433!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d6765.378470802147!2d92.73748043187469!3d11.675803691510264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTHCsDQwJzMxLjAiTiA5MsKwNDQnMjEuNSJF!5e0!3m2!1sen!2sin!4v1770965106433!5m2!1sen!2sin"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
 
             <div class="contact-form-wrapper">
@@ -148,6 +150,30 @@
             <a id="github" href="#" target="_blank"><i class="fab fa-github"></i></a>
             <a id="instagram" href="#" target="_blank"><i class="fab fa-instagram"></i></a>
           </div>
+
+          <div class="admin-section" style="margin-top: 2.5rem; text-align: center;">
+            <button id="show-messages-btn" class="btn primary">
+              <i class="fas fa-lock"></i> See Messages (Admin)
+            </button>
+
+            <!-- Hidden password form -->
+            <div id="admin-password-form" style="display: none; margin: 1.5rem auto; max-width: 400px;">
+              <input type="password" id="admin-password" placeholder="Enter admin password"
+                style="width: 100%; padding: 0.9rem; border-radius: 10px; border: 1px solid #d1d5db; margin-bottom: 1rem;">
+              <button id="submit-password-btn" class="btn primary" style="width: 100%;">
+                Unlock Messages
+              </button>
+            </div>
+
+            <!-- Messages display area -->
+            <div id="messages-list" style="display: none; margin-top: 1.5rem; text-align: left;">
+              <h3 style="margin-bottom: 1rem; color: var(--primary-dark);">Contact Form Submissions</h3>
+              <div id="messages-container"
+                style="max-height: 400px; overflow-y: auto; padding: 1rem; background: #f8fafc; border-radius: 12px; border: 1px solid #e2e8f0;">
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>

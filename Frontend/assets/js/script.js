@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   
-  fetch('https://naair-portfolio.onrender.com/api/portfolio')  
+  fetch('https://naair-portfolio.onrender.com/api/portfolio')
     .then(response => {
       if (!response.ok) throw new Error('Network response was not ok');
       return response.json();
@@ -144,10 +144,12 @@ document.addEventListener('DOMContentLoaded', () => {
           form.reset();
         } else {
           alert(result.message || 'Failed to send message. Please try again.');
-        }
+        }Get in TouchGet in Touch
+
+
       } catch (err) {
         console.error('Form submission error:', err);
-        alert('Network error. Please check your connection.');
+        // alert('Network error. Please check your connection.');
       } finally {
         submitBtn.disabled = false;
         submitBtn.innerHTML = originalText;
@@ -155,6 +157,63 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-
   switchPage('about');
 });
+
+
+// FORM MEssage
+// ────────────────────────────────────────────────
+// Admin Messages Feature (hardcoded password)
+// ────────────────────────────────────────────────
+const ADMIN_PASSWORD = 'akanksha123'; // ← Change this to whatever you want (hardcoded)
+
+const showMessagesBtn = document.getElementById('show-messages-btn');
+const passwordForm = document.getElementById('admin-password-form');
+const submitPasswordBtn = document.getElementById('submit-password-btn');
+const messagesContainer = document.getElementById('messages-container');
+const messagesList = document.getElementById('messages-list');
+
+if (showMessagesBtn) {
+  showMessagesBtn.addEventListener('click', () => {
+    passwordForm.style.display = passwordForm.style.display === 'none' ? 'block' : 'none';
+    messagesList.style.display = 'none'; // hide messages if reopening
+  });
+
+  submitPasswordBtn.addEventListener('click', async () => {
+    const enteredPass = document.getElementById('admin-password').value.trim();
+
+    if (enteredPass === ADMIN_PASSWORD) {
+      // Password correct → fetch messages
+      passwordForm.style.display = 'none';
+      messagesList.style.display = 'block';
+      messagesContainer.innerHTML = '<p style="text-align:center;"><i class="fas fa-spinner fa-spin"></i> Loading messages...</p>';
+
+      try {
+        const res = await fetch('https://naair-portfolio.onrender.com/api/portfolio/contact'); // ← change to production URL later
+        if (!res.ok) throw new Error('Failed to fetch messages');
+
+        const messages = await res.json();
+
+        if (messages.length === 0) {
+          messagesContainer.innerHTML = '<p style="text-align:center; color:#64748b;">No messages yet.</p>';
+          return;
+        }
+
+        messagesContainer.innerHTML = messages.map(msg => `
+          <div class="message-item">
+            <strong>${msg.fullname || 'Anonymous'}</strong> 
+            <small>(${msg.email || 'No email'})</small>
+            <p style="margin: 0.75rem 0;">${msg.message || ''}</p>
+            <small>${new Date(msg.submittedAt).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}</small>
+          </div>
+        `).join('');
+      } catch (err) {
+        console.error('Error fetching messages:', err);
+        messagesContainer.innerHTML = '<p style="color:#ef4444; text-align:center;">Failed to load messages. Try again.</p>';
+      }
+    } else {
+      alert('Incorrect password!');
+      document.getElementById('admin-password').value = '';
+    }
+  });
+}

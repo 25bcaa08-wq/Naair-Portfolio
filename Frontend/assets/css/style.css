@@ -514,3 +514,43 @@ h3 {
     font-size: 1.875rem;
   }
 }
+
+/* Admin Section */
+/* .admin-section {
+  border-top: 1px solid var(--border);
+  padding-top: 2rem;
+} */
+
+.btn.secondary {
+  background: #6b7280;
+  color: white;
+}
+
+.btn.secondary:hover {
+  background: #4b5563;
+}
+
+#messages-container {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+
+.message-item {
+  background: #f1f5f9;
+  padding: 1.25rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  border-left: 4px solid var(--primary);
+}
+
+.message-item strong {
+  color: var(--primary-dark);
+}
+
+.message-item small {
+  color: var(--text-lighter);
+  display: block;
+  margin-top: 0.5rem;
+}

@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const Portfolio = require('../models/Portfolio');
-const nodemailer = require('nodemailer');
+const Contact = require('../models/Contact');
+
 
 router.get('/', async (req, res) => {
   try {
@@ -12,40 +13,42 @@ router.get('/', async (req, res) => {
   }
 });
 
-
 router.post('/contact', async (req, res) => {
   const { fullname, email, message } = req.body;
 
-  console.log('Received contact form:', { fullname, email, message }); // ← debug
-
-  let transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS,
-    },
-  });
-
-  console.log('Using email credentials:', {
-    user: process.env.EMAIL_USER || '[MISSING]',
-    pass: process.env.EMAIL_PASS ? '[SET]' : '[MISSING]',
-  }); // ← very important debug line
-
-  let mailOptions = {
-    from: `"Portfolio Contact" <${process.env.EMAIL_USER}>`,
-    to: process.env.EMAIL_USER,
-    subject: `Contact Form Submission from ${fullname}`,
-    text: `From: ${email}\n\nMessage:\n${message}`,
-    replyTo: email,
-  };
+  if (!fullname || !email || !message) {
+    return res.status(400).json({ message: 'All fields are required' });
+  }
 
   try {
-    const info = await transporter.sendMail(mailOptions);
-    console.log('Email sent successfully:', info.messageId);
-    res.status(200).json({ message: 'Email sent successfully' });
-  } catch (err) {
-    console.error('Email send failed:', err.message, err.stack);
-    res.status(500).json({ message: 'Error sending email', error: err.message });
+    const newMessage = new Contact({
+      fullname,
+      email,
+      message,
+    });
+
+    await newMessage.save();
+
+    res.status(201).json({
+      message: 'Thank you! Your message has been received.',
+      data: newMessage,
+    });
+  } catch (error) {
+    console.error('Error saving contact message:', error.message);
+    res.status(500).json({ message: 'Server error. Please try again later.' });
+  }
+});
+
+router.get('/contact', async (req, res) => {
+  try {
+    const messages = await Contact.find()
+      .sort({ submittedAt: -1 })
+      .limit(50);
+
+    res.status(200).json(messages);
+  } catch (error) {
+    console.error('Error fetching messages:', error);
+    res.status(500).json({ message: 'Error fetching messages' });
   }
 });
 
